@@ -29,10 +29,6 @@ public:
         string ans;
         ans.push_back(num[0]);
 
-        // Append a character that evaluates to less than '0' to allow for the final
-        // character to be checked. We use '/' as the sentinel value.
-        num.push_back('/');
-
         // Digits in the final answer should be increasing in value from the most
         // significant digit to the least significant digit. Treat the answer string,
         // ans, as a stack. If the next digit in num, num[i], is less-than the last digit
@@ -51,12 +47,14 @@ public:
             }
         }
 
-        // The last character is not a digit and will be the sentinel character '/'.
-        // Remove it.
-        ans.pop_back();
+        // If we can still remove k digits, pop digits off since the next largest digit will
+        // always be in the least significant digit (last) position.
+        while(!ans.empty() && k-- > 0) {
+            ans.pop_back();
+        }
 
-        // If there are no more digits append a '0'.
-        if(ans.size() == 0) {
+        // If there are no digits left append a '0'.
+        if(ans.empty()) {
             ans.push_back('0');
         }
 
