@@ -26,8 +26,6 @@ using namespace std;
 class Solution {
 public:
     int thirdMax(vector<int>& nums) {
-        int len = nums.size();
-
         // Largest will contain the three largest values in descending order.
         // Initially fill largest with with a sentinel value that will always
         // be less than the minimum of an int.
@@ -37,7 +35,7 @@ public:
             numeric_limits<long>::min()
         };
 
-        for(int i = 0; i < len; ++i) {
+        for(int i = 0; i < nums.size(); ++i) {
             int num = nums[i];
 
             // If the current number is greater than an existing value in the
