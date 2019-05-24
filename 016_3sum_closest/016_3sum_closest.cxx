@@ -59,23 +59,24 @@ public:
             // Iterate the remainder of the numbers array from both ends to try and converge on the
             // target, recording the closest sum found so far. If the target is actually found, return
             // immediately since that's the best solution.
-            for(int b = a+1, c = n-1; b < c; ++b) {
-                while(b < c) {
-                    int sum = nums[a] + nums[b] + nums[c];
+            int b = a+1;
+            int c = n-1;
 
-                    if(sum == target) {
-                        return sum;
-                    }
-                    else if(sum > target) {
-                        --c;
-                    }
-                    else if(sum < target) {
-                        ++b;
-                    }
+            while(b < c) {
+                int sum = nums[a] + nums[b] + nums[c];
 
-                    if(abs(target - closest) > abs(target - sum)) {
-                        closest = sum;
-                    }
+                if(sum == target) {
+                    return sum;
+                }
+                else if(sum > target) {
+                    --c;
+                }
+                else if(sum < target) {
+                    ++b;
+                }
+
+                if(abs(target - closest) > abs(target - sum)) {
+                    closest = sum;
                 }
             }
         }
