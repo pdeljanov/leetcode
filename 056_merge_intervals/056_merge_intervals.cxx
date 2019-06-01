@@ -34,10 +34,9 @@ public:
             return ans;
         }
 
-        // Sort the intervals in ascending order with priority given to the start time. This means that
-        // [0,0] appears before [1,2], but [0,2] appears before [1,2] and after [0,0].
+        // Sort the intervals in ascending order based on the start-time.
         sort(intervals.begin(), intervals.end(), [](const vector<int>& a, const vector<int>& b) -> bool {
-            return (a[0] < b[0]) || (a[0] == b[0] && a[1] < b[1]);
+            return a[0] < b[0];
         });
 
         // Place the first interval on the answer vector as the first merged interval.
