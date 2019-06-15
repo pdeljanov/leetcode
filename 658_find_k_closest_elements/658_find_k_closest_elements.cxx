@@ -35,9 +35,9 @@ public:
         while(left < right) {
             size_t mid = (left + right) / 2;
 
-            // The closest range is ideally where there is equal distance between the
-            // values of the start and end elements of the range, and x. Therefore, use
-            // the distance between x and mid (the start of the range) vs. mid+k (the
+            // The closest range is ideally where the differences between the values of
+            // the start and end elements of the range, and x, are equal. Therefore, use
+            // the difference between x and mid (the start of the range) vs. mid+k (the
             // end of the range) and x as the binary search criteria.
             //
             // Another way to think of it is if the difference between the start element
