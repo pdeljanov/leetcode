@@ -36,13 +36,37 @@
 
 ### Dynamic Programming (DP)
 
-* Dynamic programming is when you use an initial previously calculated set of values to calculate a new set of values, overwriting the previous set with the new set.
-	- Dynamic programming should not be confused with memoization. In memoization you generally do not delete past computations.
+Dynamic Programming is a family of techniques whereby the algorithm uses data calculated in previous steps to calculate the current step or solution.
 
-* Applicable when you do not need values beyond the previous set of values.
-	* For example, counting unique paths where you can only advance forward in each dimension.
-		* Number of ways to climb up a ladder where you can skip a number of rungs each step.
-		* Number of ways to traverse a grid from the top-left to bottom-right where you can only ever move down or right each step.
+#### Memoization
+
+Memoization is a Dynamic Programming technique where the algorithm, given some state, calculates a result and stores it. If that state is encountered again, the stored result is used instead of calculating it again.
+
+*Note: Memoization IS Dynamic Programming, but Dynamic Programming IS NOT just memoization.*
+
+A common example is a recursive algorithm that calculates a result by traversing elements in depth-first order. Once the result of a sub-tree is calculated, it needn't be calculated it again. By associating the algorithm's state (the parameters of the recursive function) to the calculated result, whenever that state is encountered again, the algorithm can lookup the result in the memo, thus reducing redundant work.
+
+Visualizing recursive functions is difficult so it may not be obvious when sub-trees are visited more than once. Therefore, it is easier just consider the parameters of the recursive function itself. If the underlying data is *immutable*, and the recursive function parameters are the same, then result MUST also be the same. However, if the underlying data is *mutable*, then the memo must also be parameterized by the value of the element as well.
+
+*Note: Any algorithm, iterative or recursive, where the complete state can be parameterized can use memoization. However, it is only useful if the state occurs multiple times.*
+
+The memory complexity of memoization is dependant on the number of unique states. For example, if the recursive function above is parameterized by two values, A and B, then the *worst-case* memory usage is O(A*B).
+
+The computational complexity of memoized problems is dependent on the original algorithm's complexity, and the number of unique states.
+
+#### Forward-Only Problems
+
+Some problems never look beyond one or two previous states to calculate a new state. Using memoization in this case would waste too much memory.
+
+Examples of these problems include:
+
+* Counting unique paths where you can only advance forward in each dimension.
+	* Number of ways to climb up a ladder where you can skip a number of rungs each step.
+	* Number of ways to traverse a grid from the top-left to bottom-right where you can only ever move down or right each step.
+
+ Generally, for these problems the *worst-case* memory usage will either be O(1) or O(N+1).
+ 
+ The computational complexity of these problems are generally O(N) in the 1D case, O(N\*M) in the 2D case, O(N\*M\*P) in the 3D case, and so on.
 
 ### Graphs
 
