@@ -18,7 +18,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#include <limits>
+#include <array>
+#include <cstdint>
+#include <queue>
 #include <vector>
 
 using namespace std;
